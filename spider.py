@@ -87,10 +87,10 @@ class page(__BasePage):
     def name(self):
         return self._name
 
-    def download(self, path=''):
+    def download(self, path='man'):
         filename = os.path.join(path, self.name+'.txt')
         logging.info('Download %s'%(filename))
-        content = '               %s\n\n' % (self.name)
+        content = '                    %s\n\n' % (self.name)
         content_html = self._get_first('.post_bd')
         content += self._html2text.handle(content_html).replace(u'\n    \n    \n','').replace(u'\r\n',u'\n').replace('&lt;','<').replace('&gt;','>')
         with open(filename, 'w') as f:
